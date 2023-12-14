@@ -42,8 +42,5 @@ def get_recently_played_track():
         "timestamp": timestamp
     }
 
-    song_df = pd.DataFrame(song_dict, columns = {"song_name", "artist", "played_at", "timestamp"})
-    return df
-
-if __name__ == "__main__":
-    get_recently_played_track()
+    song_df = pd.DataFrame(song_dict, columns = ["song_name", "artist", "played_at", "timestamp"])
+    return song_df
