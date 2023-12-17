@@ -7,6 +7,7 @@ def data_quality(dataset):
         return False
     
     if dataset.isnull().values.any():
+        print("Null values found.")
         raise Exception("Null values found")
 
 #Find out users' favorite/most recently listened to artists
