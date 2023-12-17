@@ -22,4 +22,3 @@ if __name__ == "__main__":
     load_df = Extract.get_recently_played_track()
     data_quality(load_df)
     transformed_df = transform(load_df)
-    print(transformed_df)

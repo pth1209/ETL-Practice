@@ -6,6 +6,7 @@ import pandas as pd
 import requests
 from datetime import datetime
 import datetime
+import lyricsgenius
 
 load_dotenv()
 
@@ -42,13 +43,27 @@ def get_recently_played_track():
 
     data = user_recently_played.json()
 
-    song_names, artists, played_at, timestamp = [], [], [], []
+    song_names, artists, played_at, timestamp, lyrics = [], [], [], [], []
 
     for song in data["items"]:
         song_names.append(song["track"]["name"])
         artists.append(song["track"]["album"]["artists"][0]["name"])
         played_at.append(song["played_at"])
         timestamp.append(song["played_at"][0:10])
+
+    genius = lyricsgenius.Genius(token_info)
+
+    song = genius.search_song(song_names[25], artists[25])
+    print(song.lyrics)
+
+    # for i in range(len(song_names)):
+    #     song = genius.search_song(song_names[i], artists[i])
+    #     lyrics = song.lyrics
+    #     print(lyrics)
+    #     print()
+    #     print()
+    #     print()
+
 
     song_dict = {
         "song_name": song_names,
